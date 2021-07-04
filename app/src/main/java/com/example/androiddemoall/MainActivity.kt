@@ -5,9 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.*
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
@@ -16,13 +15,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        GlobalScope.launch(Dispatchers.IO){
+            Log.d(TAG,"Starting coroutin ${Thread.currentThread().name}")
+            val answer=doNetworkCall()
+            withContext(Dispatchers.Main){
+                Log.d(TAG,"Starting coroutin33 ${Thread.currentThread().name}")
+                tv_dummy.text=answer
+            }
 
+        }
+
+        /*
+        //Coroutine suspend
         GlobalScope.launch {
             val networkCallAnswer=doNetworkCall()
             val networkCallAnswer2=doNetworkCall2()
             Log.d(TAG,networkCallAnswer)
             Log.d(TAG,networkCallAnswer2)
-        }
+        }*/
 
       /* //Coroutine
        GlobalScope.launch {
