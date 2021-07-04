@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
            Log.d(TAG,"Coroutin====${Thread.currentThread().name}")
        }
 
-        Log.d(TAG,"main thread${Thread.currentThread().name}")
+        Log.d(TAG," main thread${Thread.currentThread().name}")
     }
 }
 
