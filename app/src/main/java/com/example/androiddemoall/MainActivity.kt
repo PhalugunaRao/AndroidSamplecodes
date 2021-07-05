@@ -15,6 +15,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        Log.d(TAG,"Before runBlocking")
+        runBlocking {
+            launch(Dispatchers.IO) {
+                delay(3000L)
+                Log.d(TAG,"finished IO Coroutin 1")
+            }
+            launch(Dispatchers.IO) {
+                delay(3000L)
+                Log.d(TAG,"finished IO Coroutin 2")
+            }
+            Log.d(TAG,"start of runBlocking")
+            delay(5000L)
+            Log.d(TAG,"End of runBlocking")
+        }
+        Log.d(TAG,"After of runBlocking")
+        /*
+        //Coroutine context
         GlobalScope.launch(Dispatchers.IO){
             Log.d(TAG,"Starting coroutin ${Thread.currentThread().name}")
             val answer=doNetworkCall()
@@ -23,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 tv_dummy.text=answer
             }
 
-        }
+        }*/
 
         /*
         //Coroutine suspend
