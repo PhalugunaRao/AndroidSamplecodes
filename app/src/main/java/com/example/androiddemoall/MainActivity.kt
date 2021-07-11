@@ -15,6 +15,29 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+       /*
+       //job create and cancel
+       val job = GlobalScope.launch(Dispatchers.Default) {
+           repeat(5){
+               Log.d(TAG,"Coroutine is still working....")
+               delay(1000L)
+           }
+        }
+
+       val job= GlobalScope.launch(Dispatchers.Default) {
+           Log.d(TAG,"Start long running calculation....")
+           for (i in 30..40){
+               Log.d(TAG,"Result for i = $i: ${fib(i)}")
+           }
+        }
+
+        runBlocking {
+            job.join()
+            Log.d(TAG,"Main Thread is continuing...")
+        }*/
+
+      /*
+        //runblocking
         Log.d(TAG,"Before runBlocking")
         runBlocking {
             launch(Dispatchers.IO) {
@@ -29,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             delay(5000L)
             Log.d(TAG,"End of runBlocking")
         }
-        Log.d(TAG,"After of runBlocking")
+        Log.d(TAG,"After of runBlocking")*/
         /*
         //Coroutine context
         GlobalScope.launch(Dispatchers.IO){
